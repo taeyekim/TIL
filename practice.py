@@ -1,31 +1,27 @@
-number_of_people = 0
-number_of_book = 100
 
-name = ['김시습', '허균', '남영로', '임제', '박지원']
-age = [20, 16, 52, 36, 60]
-address = ['서울', '강릉', '조선', '나주', '한성부']
+import requests
+from pprint import pprint as print
 
-def increase_user():
-    global number_of_people
-    number_of_people += 1
-    return number_of_people
+API_URL = 'https://jsonplaceholder.typicode.com/users'
+# API 요청
+response = requests.get(API_URL)
+# JSON -> dict 데이터 변환
+parsed_data = response.json()
 
-def create_user(name, age, address):
-    print(f'{name}님 환영합니다!')
-    return {'name' : name, 'age' : age, 'address' : address}
+# 응답 데이터 출력
+# print(response)
 
-def decrease_book(number):
-    global number_of_book
-    number_of_book -= number
-    print("남은 책의 수 : " + str(number_of_book))
-    return number_of_book
+# 변환 데이터 출력
+# print(parsed_data[0])
 
-def rental_book(info):
-    decrease_book(info['age'] // 10)
-    print(f"{info['name']}님이 {info['age'] // 10}권의 책을 대여하였습니다.")
-
-many_user = list(map(create_user, name, age, address))
-
-info = list(map(lambda x:{'name' : x['name'], 'age' : x['age']}, many_user))
-
-list(map(rental_book, info))
+# dummy_data = []
+# for i in range(10) :
+#     temp_dict = {'company': parsed_data['company']['name'],
+#                  'lat': parsed_data[]
+#                  }
+#     dummy_data.append(temp_dict)
+    
+    
+# print(dummy_data)
+    
+print(parsed_data[0]['company'])
