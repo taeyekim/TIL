@@ -604,5 +604,23 @@ def create_user(temp_list):
         is_validation(ele)
 
 def is_validation(ele_dict):
-    for  in ele_dict:
-        
+    global blood_types, black_list
+    check_list = []
+    for ele in ele_dict:
+        if ele['blood group'] in blood_types == False:
+            result = False
+            check_list.append('blood group')
+        elif ele['company'] not in black_list == False:
+            return 'blocked'
+        elif '@' in ele['mail'] == False:
+            result = False
+            check_list.append('mail')
+        elif 2 <= len(ele['name']) <= 30 == False:
+            result = False
+            check_list.append('name')
+        elif len(ele['website']) >= 0 == False:
+            result = False
+            check_list.append('website')
+        else:
+            result = True
+    
