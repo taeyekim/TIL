@@ -1,3 +1,5 @@
+import pprint
+
 user_data = [
     {
         'blood_group': 'AB',
@@ -600,27 +602,40 @@ black_list = [
 ]
 
 def create_user(temp_list):
+    user_list = []
+    user_cnt = 0
     for ele in temp_list:
-        is_validation(ele)
-
+        result = is_validation(ele)
+        if result[0] == False:
+            user_cnt += 1
+            for i in result[1]:
+                ele[i] = None
+        elif result == 'blocked':
+            user_cnt += 1
+        user_list.append(ele)
+            
+    pprint.pprint(f"잘못된 데이터로 구성된 유저의 수는 {user_cnt}입니다.")
+    pprint.pprint(user_list)
+            
 def is_validation(ele_dict):
     global blood_types, black_list
     check_list = []
-    for ele in ele_dict:
-        if ele['blood group'] in blood_types == False:
-            result = False
-            check_list.append('blood group')
-        elif ele['company'] not in black_list == False:
-            return 'blocked'
-        elif '@' in ele['mail'] == False:
-            result = False
-            check_list.append('mail')
-        elif 2 <= len(ele['name']) <= 30 == False:
-            result = False
-            check_list.append('name')
-        elif len(ele['website']) >= 0 == False:
-            result = False
-            check_list.append('website')
-        else:
-            result = True
-    
+    result = True
+    if ele_dict['blood_group'] not in blood_types:
+        result = False
+        check_list.append('blood_group')
+    if ele_dict['company'] in black_list:
+        return 'blocked'
+    if '@' not in ele_dict['mail']:
+        result = False
+        check_list.append('mail')
+    if len(ele_dict['name']) < 2 or len(ele_dict['name']) > 30:
+        result = False
+        check_list.append('name')
+    if (len(ele_dict['website'])) == 0:
+        result = False
+        check_list.append('website')
+
+    return (result, check_list)
+
+create_user(user_data)
