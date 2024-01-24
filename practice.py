@@ -1,7 +1,10 @@
-my_set = {'a', 'b', 'c', 1, 2, 3}
+T = int(input())
 
-my_set.add(4)
-print(my_set)
-
-my_set.clear()
-print(my_set)
+import math
+while T > 0:
+    N, M = map(int, input().split())
+    if M >= N:
+        print(math.factorial(M) // math.factorial(M-N) // math.factorial(N))
+    else:
+        print(0)
+    T -= 1
