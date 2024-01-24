@@ -6,3 +6,4 @@ class StringRepeater:
 
 repeater1 = StringRepeater()
 repeater1.repeat_string(3, "Hello")
+
