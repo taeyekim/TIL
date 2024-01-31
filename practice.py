@@ -1,17 +1,21 @@
-N = 6
-K = 9
-data = [7, 2, 4, 5, 1,3]
-counts = [0] (K+1)
-temp = [0] * N
+T = int(input())
 
-# counts 배열에 기록하기
-for x in data:
-    counts[x] += 1
-# counts 누적합 구하기
-    for i in range(1, k+1):
-        counts[i] = counts[i - 1] + counts[i]
-# 데이터의 마지막 원소부터 정렬하기...
-for i in range(n-1, -1, -1): # N-1 -> 
-    counts[data[i]] -= 1 # 개수를 인덱스로 변환
-    temp[counts[data[i]]] = data[i]
-print(*temp)
+def check():
+    now = 0
+    cnt = 0
+    for i in range(1, M): # 1 ~ M-1
+        if STOPS[i] - STOPS[i-1] > K:
+            return 0
+
+    # print(K, N, M, STOPS)
+        if now+K < STOPS[i]:
+            cnt += 1
+            now = STOPS[i-1]
+    return cnt
+
+for tc in range(1, T+1):
+    K, N, M = map(int, input().split()) # K = 최대 이동 거리 / N 정류장 수 / M 충전기 개수
+    STOPS = [0] + list(map(int, input().split())) +[N] # [0, 1, 3, 5, 7, 9, N]
+    M += 2
+
+    print(f'#{tc} {check()}')
