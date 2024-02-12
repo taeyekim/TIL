@@ -14,3 +14,4 @@ for tc in range(1, T+1):
     for i in busstop: # 출력할 정류장 번호
         print(counts[i], end = ' ')
     print()
+    

@@ -1,21 +1,54 @@
-T = int(input())
+# 선생님 Stack
+def push(c):
+    global top
+    if is_full():
+        print('full-')
+        return
+    top += 1
+    STACK[top] = c
 
-def check():
-    now = 0
-    cnt = 0
-    for i in range(1, M): # 1 ~ M-1
-        if STOPS[i] - STOPS[i-1] > K:
-            return 0
+def pop():
+    global top
+    if is_empty():
+        print('empty-')
+        return
+    top -= 1
+    return STACK.pop(STACK[top+1]) #앞에 데이터를 받는 것이기 때문에
 
-    # print(K, N, M, STOPS)
-        if now+K < STOPS[i]:
-            cnt += 1
-            now = STOPS[i-1]
-    return cnt
+def peek():
+    return STACK[top]
 
-for tc in range(1, T+1):
-    K, N, M = map(int, input().split()) # K = 최대 이동 거리 / N 정류장 수 / M 충전기 개수
-    STOPS = [0] + list(map(int, input().split())) +[N] # [0, 1, 3, 5, 7, 9, N]
-    M += 2
+def is_empty():
+    global top
+    if top < 0:
+        print("empty")
+        return True
+    return False
 
-    print(f'#{tc} {check()}')
+def is_full():
+    global top
+    if top >= SIZE-1 :
+        print('full')
+        return True
+    return False
+
+SIZE = 10
+STACK = [0] * SIZE
+top = -1
+print(STACK, top)
+push('A')
+print(STACK, top)
+push('B')
+print(STACK, top)
+push('C')
+print(STACK, top)
+c = pop()
+print("c:", c)
+print(STACK, top)
+print(pop())
+print(STACK, top)
+print(pop())
+print(STACK, top)
+print(pop())
+print(STACK, top)
+
