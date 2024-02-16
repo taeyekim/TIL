@@ -1,4 +1,4 @@
-# 15126. 5099 피자 굽기
+
 
 T = int(input())
 
@@ -8,20 +8,19 @@ for tc in range(1, T+1):
 
     # print(N, M, Ci)
 
-    pan = [0] * N
+    pan = [0] * N # N칸 만큼의 팬
     nextPizzaNo = 1
     while pan:
         pizzaNo = pan.pop(0)
         # pizzaNo의 치즈량을 1/2로 감소
         Ci[pizzaNo] //= 2
         if Ci[pizzaNo] == 0:
-            if nextPizzaNo <= M: # 남은 피자가 있으면
+            if nextPizzaNo <= M: # M개의 피자보다 nextPizzaNo가 낮으면
                 pan.append(nextPizzaNo)
                 nextPizzaNo += 1
         else:
-            #- pizzNo 를 다시 pan에 (pan.append(pizzaNo))
+            # pizzaNo를 다시 pan에 pan.append(pizzaNo)
             pan.append(pizzaNo)
-        print(f"pan : {pan}, pizzaNo : {pizzaNo}, nextPizzaNo : {nextPizzaNo}")
-    print(f'#{tc} {pizzaNo}')
 
+    print(f"#{tc} {pizzaNo}")
 
