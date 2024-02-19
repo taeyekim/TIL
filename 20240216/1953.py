@@ -54,6 +54,7 @@ def bfs(stR, stC, time):
 T = int(input())
 
 for tc in range(1, T+1):
+
     # N = 세로, M = 가로, R = 맨홀 세로, C = 맨홀 가로, 탈출 소요 시간
     N, M, R, C, L = map(int, input().split())
 
