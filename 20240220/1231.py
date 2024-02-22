@@ -11,6 +11,10 @@ def in_order(v):
     # v번의 오른쪽 서브트리 처리
     in_order(v*2+1)
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 T = 10
 for tc in range(1,T+1):
     # 총 노드의 개수
@@ -26,9 +30,14 @@ for tc in range(1,T+1):
         # node[0]: 노드 번호,  node[1] : 값
         tree[int(node[0])] = node[1]
     # print(tree)
+<<<<<<< Updated upstream
     print(f"#{tc} ", end = '')
     in_order(1)
     print()
+=======
+    in_order(1)
+
+>>>>>>> Stashed changes
 
 '''
 8               

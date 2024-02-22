@@ -1,54 +1,39 @@
-# 선생님 Stack
-def push(c):
-    global top
-    if is_full():
-        print('full-')
-        return
-    top += 1
-    STACK[top] = c
+def bfs(stR, stC):
+    Q = []
+    visited = [[False] * N for _ in range(N)]
+    direction = [(0,1), (0,-1), (1, 0), (-1, 0)]
 
-def pop():
-    global top
-    if is_empty():
-        print('empty-')
-        return
-    top -= 1
-    return STACK.pop(STACK[top+1]) #앞에 데이터를 받는 것이기 때문에
+    Q.append((stR, stC))
+    visited[stR][stC] = True
 
-def peek():
-    return STACK[top]
+    while Q:
+        vR, vC = Q.pop(0)
+        for dr, dc in direction:
+            wR = vR + dr
+            wC = vC + dc
 
-def is_empty():
-    global top
-    if top < 0:
-        print("empty")
-        return True
-    return False
+            if 0 <= wR < N and 0 <= wC < N:
+                if arr[wR][wC] == 3:
+                    return 1
 
-def is_full():
-    global top
-    if top >= SIZE-1 :
-        print('full')
-        return True
-    return False
+                if arr[wR][wC] == 0 and not visited[wR][wC]:
+                    Q.append((wR, wC))
+                    visited[wR][wC] = True
 
-SIZE = 10
-STACK = [0] * SIZE
-top = -1
-print(STACK, top)
-push('A')
-print(STACK, top)
-push('B')
-print(STACK, top)
-push('C')
-print(STACK, top)
-c = pop()
-print("c:", c)
-print(STACK, top)
-print(pop())
-print(STACK, top)
-print(pop())
-print(STACK, top)
-print(pop())
-print(STACK, top)
+    return 0
 
+
+T = 10
+for _ in range(1, T+1):
+    tc = int(input())
+    N = 16
+    arr = [list(map(int, input())) for _ in range(N)]
+
+    for row in range(N):
+        for col in range(N):
+            if arr[row][col] == 2:
+                stR = row
+                stC = col
+                break
+
+    print(f'#{tc} {bfs(stR, stC)}')

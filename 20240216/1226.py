@@ -18,17 +18,17 @@
 def bfs(stR, stC):
     Q = []
     visited = [[False] * N for _ in range(N)] # 0으로 초기화
-
-    Q.append((stR, stC))
+    direction = [(1, 0), (-1, 0), (0, 1), (0, -1)] # direction[0]~[3]
+    Q.append((stR, stC)) # Q = [], Q.append(stR, stC) Q[0] Q[1]
     visited[stR][stC] = True # 1로 체인지 가능
-
+    
     while Q:
         # v = Q.pop()
         # vR = v[0]
-        # vC = v1]
+        # vC = v[1]
 
         vR, vC = Q.pop(0)
-        for dr, dc in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+        for dr, dc in direction: # (1, 1) + (1, 0) = (2, 1)
             wR = vR + dr
             wC = vC + dc
 
