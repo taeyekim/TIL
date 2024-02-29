@@ -127,9 +127,9 @@ for tc in range(1,T+1) :
             # total += time
         else :
             time = abs(x-pos[robot]) #이동시간
-            if time < pre_time : #내 이동시간이 기다리던 시간 보다 작으면/뺀 게 음수면
+            if time < pre_time: #내 이동시간이 기다리던 시간 보다 작으면/뺀 게 음수면
                 time = 1
-            else :
+            else:
                 time = time - pre_time + 1 #더 걸린 시간 구하기 + 1(버튼 누르는 시간)
 
             pre_time = time #???
