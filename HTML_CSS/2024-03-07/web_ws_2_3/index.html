@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .best-seller, .new-arrivals {
+        font-size: 18px;
+        width: 100%;
+        background-color: #fff;
+        padding: 10px;
+        margin: 20px;
+        position: sticky;
+        top: 0; /* 상단에 고정 */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        font-weight: bold;
+    }
+
+    .book-container {
+      box-sizing: border-box;
+      display: inline-block;
+      background-color: #fff;
+      width: 300px;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .book-author {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .book-description {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .top-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .top-button a {
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>도서 관리 서비스에 오신 것을 환영합니다</h1>
+
+  <div class="best-seller">베스트 셀러 목록</div>
+  <div class="book-container">
+    <h2 class="book-title">도서 제목 1</h2>
+    <p class="book-author">저자 1</p>
+    <p class="book-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at lacus vel neque ullamcorper tempus.</p>
+  </div>
+
+  <div class="book-container">
+    <h2 class="book-title">도서 제목 2</h2>
+    <p class="book-author">저자 2</p>
+    <p class="book-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+  </div>
+
+  <div class="new-arrivals">신간 도서 목록</div>
+
+  <div class="book-container">
+    <h2 class="book-title">도서 제목 3</h2>
+    <p class="book-author">저자 3</p>
+    <p class="book-description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+  <div class="top-button"><a href="#">TOP</a></div>
+</body>
+</html>
+
+<!--
+각 섹션별 도서 목록을 flex를 사용하여 레이아웃을 구성하시오.
+각 요소들은 수평, 수직 중앙 정렬이 될 수 있도록 구성한다.
+-->
