@@ -38,8 +38,20 @@
 #
 #     print(f'#{tc} {bfs(stR, stC)}')
 
-while True:
-    a, b = map(int,input().split())
-    if (a, b) == (0, 0):
-        break
-    print(a+b)
+# S = input()
+
+# arr = [-1] * 26
+
+# for s in S:
+#     if arr[ord(s) - ord('a')] == -1:
+#         arr[ord(s) - ord('a')] = S.index(s)
+# print(*arr)
+
+S = list(input()) # 'baekjoon'
+alphabet = {'a':0, 'b':1, 'c':2, 'd':3, 'e':4, 'f':5, 'g':6, 'h':7, 'i':8, 'j':9, 'k':10, 'l':11, 'm':12, 'n':13, 'o':14, 'p':15, 'q':16, 'r':17, 's':18, 't':19, 'u':20, 'v':21, 'w':22, 'x':23, 'y':24, 'z':25}
+result = [-1] * 26
+
+for i in range(len(S)):
+    if result[alphabet[S[i]]] == -1: # result는 0 ~ 25 인덱스에 -1로 단어 포함 여부 확인용
+        result[alphabet[S[i]]] = S.index(S[i]) 
+print(*result)
