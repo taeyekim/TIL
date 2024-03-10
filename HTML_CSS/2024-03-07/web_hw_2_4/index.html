@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div p {
+      color: blue;
+    }
+    div > p {
+      color: crimson;
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+    <p>자식</p>
+    <section>
+      <p>손자</p>
+    </section>
+    <p>자식</p>
+  </div>
+</body>
+</html>
+
+<!-- 
+  자손 결합자(공백 사용)는 한 요소 내의 특정 자손 요소에 스타일을 적용합니다.
+  '자손'은 중첩의 깊이에 관계 없이 해당 요소 아래에 위치한 모든 요소를 의미합니다.
+    div p {
+      color: blue;
+    }
+    div 태그 아래에 위치한 모든 p 태그에 대해 color: blue 스타일을 적용합니다.
+
+    자식 결합자('>' 기호 사용)는 한 요소의 바로 아래에 있는 자식 요소들에만 스타일을 적용합니다.
+    '자식'은 오직 해당 요소 바로 아래에 있는 요소들을 의미하며, 더 깊이 중첩된 요소들은 포함하지 않습니다.
+    div > p {
+      color: crimson;
+    }
+    div 태그 바로 아래에 위치한 p 태그에만 스타일을 적용합니다.
+-->

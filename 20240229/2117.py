@@ -10,7 +10,7 @@ def solve(row, col):
         for j in range(N):
             K[i][j] += (abs(row - i) + abs(col - j))
 
-#===============
+# ====================
 Home = [(2,3), (3,4), (5,6)]
 
 T = int(input())
