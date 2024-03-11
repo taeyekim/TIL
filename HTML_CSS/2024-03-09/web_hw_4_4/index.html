@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>소셜 커머스 페이지</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    .img-fluid {
+        width:12rem;
+        height:12rem;
+    }
+
+    @media (min-width: 992px) {
+      .featured, .category {
+        display: flex;
+        flex-direction: column;
+      }
+      .category {
+        padding-left: 20px; /* or margin-left, based on preference */
+      }
+      .product-section {
+        display: flex;
+      }
+      .product-section .col-md-4 {
+        flex: 0 0 auto;
+        width: 33.3333%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-4">
+  <div class="row">
+    <!-- 주목 상품 + 카테고리 -->
+    <div class="col-12 col-lg-9 featured">
+      <h2>주목 상품</h2>
+      <div class="product-img">
+        <img src="assets/product1.jpg" class="img-fluid" alt="상품 1">
+        <p>상품 1</p>
+        <p>상품 1에 대한 설명입니다.</p>
+      </div>
+      <div class="product-img">
+        <img src="assets/product2.jpg" class="img-fluid" alt="상품 2">
+        <p>상품 2</p>
+        <p>상품 2에 대한 설명입니다.</p>
+      </div>
+      <div class="product-img">
+        <img src="assets/product3.jpg" class="img-fluid" alt="상품 3">
+        <p>상품 3</p>
+        <p>상품 3에 대한 설명입니다.</p>
+      </div>
+    </div>
+    <div class="col-lg-3 category d-none d-lg-block">
+      <h2>카테고리</h2>
+        <ul>
+            <li>카테고리 1</li>
+            <li>카테고리 2</li>
+            <li>카테고리 3</li>
+            <li>카테고리 4</li>
+        </ul>
+    </div>
+  </div>
+
+  <!-- 하단 상품 섹션 -->
+  <div class="row mt-4 product-section">
+    <div class="col-12 col-md-4">
+      <h2>인기 상품</h2>
+      <div class="product-img">
+        <img src="assets/product4.jpg" class="img-fluid" alt="인기 상품 1">
+        <p>상품 4</p>
+        <p>상품 4에 대한 설명입니다.</p>
+      </div>
+      <div class="product-img">
+        <img src="assets/product5.jpg" class="img-fluid" alt="인기 상품 2">
+        <p>상품 5</p>
+        <p>상품 5에 대한 설명입니다.</p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <h2>신상품</h2>
+      <div class="product-img">
+        <img src="assets/product6.jpg" class="img-fluid" alt="신상품 1">
+        <p>상품 6</p>
+        <p>상품 6에 대한 설명입니다.</p>
+      </div>
+      <div class="product-img">
+        <img src="assets/product7.jpg" class="img-fluid" alt="신상품 2">
+        <p>상품 7</p>
+        <p>상품 7에 대한 설명입니다.</p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <h2>특별 할인</h2>
+      <div class="product-img">
+        <img src="assets/product8.jpg" class="img-fluid" alt="특별 할인 상품 1">
+        <p>상품 8</p>
+        <p>상품 8에 대한 설명입니다.</p>
+      </div>
+      <div class="product-img">
+        <img src="assets/product9.jpg" class="img-fluid" alt="특별 할인 상품 2">
+        <p>상품 9</p>
+        <p>상품 9에 대한 설명입니다.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
