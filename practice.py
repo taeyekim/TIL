@@ -47,9 +47,14 @@
 #         arr[ord(s) - ord('a')] = S.index(s)
 # print(*arr)
 
-N = int(input())
+arr = []
+for i in range(5):
+    arr.append(int(input()))
+    
 total = 0
-i = 1
-while True:
-    if total + i >= N:
-        break
+for i in range(5):
+    if arr[i] <= 40:
+        total += 40
+    else:
+        total += arr[i]
+print(total // 5)
