@@ -3,7 +3,7 @@
 # pivot의 위치를 return 한다.
 numbers = [3, 2, 4, 6, 9, 1, 8, 7, 5]
 
-def partitopm_l(s, e):
+def partition_l(s, e):
     p = e
     i = s - 1
     for j in range(p, e-1):
@@ -41,5 +41,7 @@ def quick_sort(s, e):
 
 # numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-# N = len(numbers)
-quick_sort()
+N = len(numbers) - 1
+quick_sort(0, N)
+
+print(numbers)
