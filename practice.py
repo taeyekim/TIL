@@ -47,9 +47,8 @@
 #         arr[ord(s) - ord('a')] = S.index(s)
 # print(*arr)
 
-<<<<<<< HEAD
-def bfs(root):
-=======
+
+# def bfs(root):
 # import sys
 # from collections import deque
 #
@@ -93,35 +92,59 @@ from collections import deque
 # 입력 함수를 빠른 sys.stdin.readline으로 변경
 input = sys.stdin.readline
 
-def bfs(row, col):
-    lst = []
-    lst.append((row, col))
-    visited = [[0] * M for _ in range(N)]
-    visited[row][col] = True
+# def bfs(row, col):
+#     lst = []
+#     lst.append((row, col))
+#     visited = [[0] * M for _ in range(N)]
+#     visited[row][col] = True
+#
+#     while lst:
+#         x, y = lst.pop(0)
+#         for dx, dy in [(0, 1), (1, 0), (-1, 0), (0, -1)]:
+#             nx = x + dx
+#             ny = y + dy
+#             if 0 <= nx <= N - 1 and 0 <= ny <= M - 1:
+#                 if tomato[nx][ny] == 0 and visited[nx][ny] == 0:
+#                     visited[nx][ny] = visited[x][y] + 1
+#                     lst.append((nx, ny))
+#
+# M, N = map(int, input().split())
+#
+# tomato = [list(map(int, input().split())) for _ in range(N)]
+# answer = 0
+# for i in range(N):
+#     for j in range(M):
+#         if tomato[i][j] == 1:
+#             bfs(i, j)
+# for i in range(N):
+#     if tomato[i].count(0) + tomato[i].count(-1) >= 1:
+#         answer = -1
+# for i in range(N):
+#     if answer != -1 and answer >= max(tomato[i]):
+#         answer = max(tomato[i])
+# print(answer)
 
-    while lst:
-        x, y = lst.pop(0)
-        for dx, dy in [(0, 1), (1, 0), (-1, 0), (0, -1)]:
-            nx = x + dx
-            ny = y + dy
-            if 0 <= nx <= N - 1 and 0 <= ny <= M - 1:
-                if tomato[nx][ny] == 0 and visited[nx][ny] == 0:
-                    visited[nx][ny] = visited[x][y] + 1
-                    lst.append((nx, ny))
+# 주어진 입력값
+K, N = map(int, input().split())
+lengths = []
+for i in range(K):
+    lengths.append(int(input()))
 
-M, N = map(int, input().split())
+# 이진 검색을 이용한 랜선 자르기
+def find_max_length(K, N, lengths):
+    start, end = 1, max(lengths) # 시작 길이와 끝 길이 설정
 
-tomato = [list(map(int, input().split())) for _ in range(N)]
-answer = 0
-for i in range(N):
-    for j in range(M):
-        if tomato[i][j] == 1:
-            bfs(i, j)
-for i in range(N):
-    if tomato[i].count(0) + tomato[i].count(-1) >= 1:
-        answer = -1
-for i in range(N):
-    if answer != -1 and answer >= max(tomato[i]):
-        answer = max(tomato[i])
+    while start <= end:
+        mid = (start + end) // 2 # 중간 길이
+        num_cables = sum(length // mid for length in lengths) # 중간 길이로 잘랐을 때 만들 수 있는 랜선 개수
+
+        # 만들어진 랜선의 개수가 목표 개수보다 많거나 같다면, 더 긴 길이 탐색
+        if num_cables >= N:
+            start = mid + 1
+        else: # 만들어진 랜선의 개수가 목표 개수보다 적다면, 더 짧은 길이 탐색
+            end = mid - 1
+
+    return end # 최대 길이 반환
+
+answer = find_max_length(K, N, lengths)
 print(answer)
->>>>>>> 63cbaef78a42e6d32eb2908eb09fa18ef1493501
