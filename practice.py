@@ -149,21 +149,14 @@ from collections import deque
 # answer = find_max_length(K, N, lengths)
 # print(answer)
 
-T = int(input())
-
-for tc in range(1, T+1):
-    N = float(input())
-    bin = 1
-    answer = ''
-    while N != 0:
-        bin /= 2
-        if N - bin >= 0:
-            N -= bin
-            answer += '1'
-        else:
-            answer += '0'
-
-        if len(answer) >= 13:
-            answer = 'overflow'
-            break
-    print(f"#{tc} {answer}")
+while True:
+    A, B = map(int, input().split())
+    if A == 0 and B == 0:
+        break
+    if A % B == 0:
+        ans = 'multiple'
+    elif B % A == 0:
+        ans = 'factor'
+    else:
+        ans = 'neither'
+    print(ans)
