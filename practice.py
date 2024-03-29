@@ -149,21 +149,21 @@ from collections import deque
 # answer = find_max_length(K, N, lengths)
 # print(answer)
 
-T = int(input())
-
-for tc in range(1, T+1):
-    N = float(input())
-    bin = 1
-    answer = ''
-    while N != 0:
-        bin /= 2
-        if N - bin >= 0:
-            N -= bin
-            answer += '1'
+def is_prime(num):
+    if num == 1:
+        return 0
+    elif num == 2 or num == 3:
+        return 1
+    else:
+        for i in range(2,num//2 + 1):
+            if num % i == 0:
+                return 0
         else:
-            answer += '0'
+            return 1
 
-        if len(answer) >= 13:
-            answer = 'overflow'
-            break
-    print(f"#{tc} {answer}")
+N = int(input())
+cnt = 0
+arr = list(map(int, input().split()))
+for num in arr:
+    cnt += is_prime(num)
+print(cnt)
