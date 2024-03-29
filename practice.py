@@ -149,6 +149,7 @@ from collections import deque
 # answer = find_max_length(K, N, lengths)
 # print(answer)
 
+<<<<<<< HEAD
 def is_prime(num):
     if num == 1:
         return 0
@@ -167,3 +168,16 @@ arr = list(map(int, input().split()))
 for num in arr:
     cnt += is_prime(num)
 print(cnt)
+=======
+while True:
+    A, B = map(int, input().split())
+    if A == 0 and B == 0:
+        break
+    if A % B == 0:
+        ans = 'multiple'
+    elif B % A == 0:
+        ans = 'factor'
+    else:
+        ans = 'neither'
+    print(ans)
+>>>>>>> 0fb25dd544851fd297f9a449c44cd10a18de493f
