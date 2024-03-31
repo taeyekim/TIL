@@ -149,14 +149,167 @@ from collections import deque
 # answer = find_max_length(K, N, lengths)
 # print(answer)
 
+# dfs 출력, bfs 출력
+
+# from collections import deque
+# def dfs(s):
+#     global visit
+#     st = []
+#     st.append(s)
+#     visit[s] = True
+#
+#     while st:
+#         v = st.pop()
+#         print(v, end = ' ')
+#         for w in sorted(G[v]):
+#             if not visit[w]:
+#                 dfs(w)
+#
+# def bfs(s):
+#     q = deque()
+#     q.append(s)
+#     visited = [False] *(N + 1)
+#     visited[s] = True
+#     while q:
+#         v = q.popleft()
+#         print(v, end=' ')
+#         for w in sorted(G[v]):
+#             if not visited[w]:
+#                 q.append(w)
+#                 visited[w] = True
+#
+# N, M, V = map(int, input().split()) # 노드(정점) N, 간선 M, 정점 번호 V 4, 5, 1
+#
+# A = []
+# G = [[] for _ in range(N+1)]
+# for _ in range(M):
+#     A.append(list(map(int, input().split())))
+#
+# for i in range((len(A))): # [[1,2], [1,3] .. [3,4]] / 첫 스타트 [1,2]
+#     G[A[i][0]].append(A[i][1])
+#     G[A[i][1]].append(A[i][0])
+#
+# visit = [False] * (N + 1)
+# dfs(V)
+# print()
+# bfs(V)
+
+# # 1 익은 토마토, 0 익지 않은 토마토, -1 토마토 없는 칸
+# dx = [0, 0, 1, -1]
+# dy = [1, -1, 0, 0]
+#
+# from collections import deque
+# def bfs(pos):
+#     # global day
+#     q = deque()
+#     for ele in pos:
+#         q.append(ele + [tomato[ele[0]][ele[1]]])
+#     # visited = list([0] * M for _ in range(N))
+#     # visited[x][y] = day
+#     while q:
+#         v = q.popleft()
+#         # day += 1
+#         for i in range(4):
+#             nx = v[0] + dx[i]
+#             ny = v[1] + dy[i]
+#             if 0 <= nx <= N - 1 and 0 <= ny <= M - 1:
+#                 if tomato[nx][ny] == 0:
+#                     tomato[nx][ny] = tomato[v[0]][v[1]] + 1
+#                     q.append([nx, ny, tomato[v[0]][v[1]] + 1])
+#         # for i in range(N):
+#         #     print(tomato[i])
+#         # print()
+#
+# M, N = map(int, input().split()) # 가로 M, 세로 N
+#
+# tomato = [list(map(int, (input().split()))) for _ in range(N)]
+# bp = False
+# day = 0
+# pos = []
+# for i in range(N):
+#     for j in range(M):
+#         if tomato[i][j] == 1:
+#             pos.append([i, j])
+#
+# bfs(pos)
+#
+# answer = 0
+# for i in range(N):
+#     answer = max(answer, max(tomato[i]))
+#     if tomato[i].count(0) >= 1:
+#         answer = -1
+#         break
+# if answer == -1:
+#     print(-1)
+# else:
+#     print(answer - 1)
+
+# def bfs(r,c):
+#     #공기일떄만 q 에 넣기
+#     while q :
+#         vr, vc =  q.popleft()
+#
+#         for dr, dc in [(상)(하)(좌)(우)]:
+#             nr =
+#             nc =
+#             if 범위 and not visited:
+#                 if 새로 갈 곳이 0이면
+#                 큐에 넣기
+#                 방문처리 하기
+#                 if 새로 갈 곳이 1이면
+#                 값을 0으로 바꿔주기
+#                 녹는 치즈 카운트+1
+#                 방문처리 하기
+# cnt = 1
+# time = 0
+# while True:
+#     if cnt == 0:
+#         print(time)
+#         print(cnt)
+#         break
+#     cnt = 0
+#     for r in range():
+#         for c in range():
+#             if arr[r][c] == 0:
+#                 cnt = bfs(r, c)
+#     time += 1
+# print()
+from collections import deque
+
+def melt_cheese():
+    q = deque([(0, 0)])  # 판의 가장자리에서 시작
+    visited = [[False] * row for _ in range(col)]
+    melt_list = []  # 이번 단계에서 녹을 치즈의 위치를 저장
+
+    while q:
+        y, x = q.popleft()
+        for dx, dy in [(0, 1), (1, 0), (-1, 0), (0, -1)]:
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < row and 0 <= ny < col and not visited[ny][nx]:
+                if lst[ny][nx] == 1:
+                    melt_list.append((ny, nx))  # 외부 공기에 접촉한 치즈 저장
+                elif lst[ny][nx] == 0:
+                    q.append((ny, nx))
+                visited[ny][nx] = True
+
+    # 외부 공기에 접촉한 치즈 녹이기
+    for y, x in melt_list:
+        lst[y][x] = 0
+
+    return len(melt_list)  # 이번 단계에서 녹은 치즈의 수 반환
+
+col, row = map(int, input().split())
+lst = [list(map(int, input().split())) for _ in range(col)]
+time = 0
+last_melt = 0
+
 while True:
-    A, B = map(int, input().split())
-    if A == 0 and B == 0:
+    melted = melt_cheese()
+    if melted == 0:
         break
-    if A % B == 0:
-        ans = 'multiple'
-    elif B % A == 0:
-        ans = 'factor'
-    else:
-        ans = 'neither'
-    print(ans)
+    last_melt = melted
+    time += 1
+
+print(time)
+print(last_melt)
+
