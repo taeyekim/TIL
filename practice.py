@@ -149,6 +149,7 @@ from collections import deque
 # answer = find_max_length(K, N, lengths)
 # print(answer)
 
+<<<<<<< HEAD
 # dfs 출력, bfs 출력
 
 # from collections import deque
@@ -303,13 +304,46 @@ lst = [list(map(int, input().split())) for _ in range(col)]
 time = 0
 last_melt = 0
 
+=======
+<<<<<<< HEAD
+def is_prime(num):
+    if num == 1:
+        return 0
+    elif num == 2 or num == 3:
+        return 1
+    else:
+        for i in range(2,num//2 + 1):
+            if num % i == 0:
+                return 0
+        else:
+            return 1
+
+N = int(input())
+cnt = 0
+arr = list(map(int, input().split()))
+for num in arr:
+    cnt += is_prime(num)
+print(cnt)
+=======
+>>>>>>> 3cd294d36fe0f3e24ead3cc557f58dda18f273ce
 while True:
     melted = melt_cheese()
     if melted == 0:
         break
+<<<<<<< HEAD
     last_melt = melted
     time += 1
 
 print(time)
 print(last_melt)
 
+=======
+    if A % B == 0:
+        ans = 'multiple'
+    elif B % A == 0:
+        ans = 'factor'
+    else:
+        ans = 'neither'
+    print(ans)
+>>>>>>> 0fb25dd544851fd297f9a449c44cd10a18de493f
+>>>>>>> 3cd294d36fe0f3e24ead3cc557f58dda18f273ce
