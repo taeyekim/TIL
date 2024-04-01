@@ -149,7 +149,6 @@ from collections import deque
 # answer = find_max_length(K, N, lengths)
 # print(answer)
 
-<<<<<<< HEAD
 # dfs 출력, bfs 출력
 
 # from collections import deque
@@ -275,75 +274,108 @@ from collections import deque
 #                 cnt = bfs(r, c)
 #     time += 1
 # print()
+# from collections import deque
+#
+# def melt_cheese():
+#     q = deque([(0, 0)])  # 판의 가장자리에서 시작
+#     visited = [[False] * row for _ in range(col)]
+#     melt_list = []  # 이번 단계에서 녹을 치즈의 위치를 저장
+#
+#     while q:
+#         y, x = q.popleft()
+#         for dx, dy in [(0, 1), (1, 0), (-1, 0), (0, -1)]:
+#             nx, ny = x + dx, y + dy
+#             if 0 <= nx < row and 0 <= ny < col and not visited[ny][nx]:
+#                 if lst[ny][nx] == 1:
+#                     melt_list.append((ny, nx))  # 외부 공기에 접촉한 치즈 저장
+#                 elif lst[ny][nx] == 0:
+#                     q.append((ny, nx))
+#                 visited[ny][nx] = True
+#
+#     # 외부 공기에 접촉한 치즈 녹이기
+#     for y, x in melt_list:
+#         lst[y][x] = 0
+#
+#     return len(melt_list)  # 이번 단계에서 녹은 치즈의 수 반환
+#
+# col, row = map(int, input().split())
+# lst = [list(map(int, input().split())) for _ in range(col)]
+# time = 0
+# last_melt = 0
+#
+# =======
+# <<<<<<< HEAD
+# def is_prime(num):
+#     if num == 1:
+#         return 0
+#     elif num == 2 or num == 3:
+#         return 1
+#     else:
+#         for i in range(2,num//2 + 1):
+#             if num % i == 0:
+#                 return 0
+#         else:
+#             return 1
+#
+# N = int(input())
+# cnt = 0
+# arr = list(map(int, input().split()))
+# for num in arr:
+#     cnt += is_prime(num)
+# print(cnt)
+# =======
+# >>>>>>> 3cd294d36fe0f3e24ead3cc557f58dda18f273ce
+# while True:
+#     melted = melt_cheese()
+#     if melted == 0:
+#         break
+# <<<<<<< HEAD
+#     last_melt = melted
+#     time += 1
+#
+# print(time)
+# print(last_melt)
+#
+# =======
+#     if A % B == 0:
+#         ans = 'multiple'
+#     elif B % A == 0:
+#         ans = 'factor'
+#     else:
+#         ans = 'neither'
+#     print(ans)
+# >>>>>>> 0fb25dd544851fd297f9a449c44cd10a18de493f
+# >>>>>>> 3cd294d36fe0f3e24ead3cc557f58dda18f273ce
 from collections import deque
 
-def melt_cheese():
-    q = deque([(0, 0)])  # 판의 가장자리에서 시작
-    visited = [[False] * row for _ in range(col)]
-    melt_list = []  # 이번 단계에서 녹을 치즈의 위치를 저장
+# def find_closest_sum(cards, N, M, start, depth, current_sum):
+#     global max_sum
+#
+#     if depth == 3:
+#         if current_sum <= M:
+#             max_sum = max(max_sum, current_sum)
+#         return
+#
+#     if start >= N:
+#         return
+#
+#     find_closest_sum(cards, N, M, start + 1, depth + 1, current_sum + cards[start])
+#     find_closest_sum(cards, N, M, start + 1, depth, current_sum)
+#
+#
+# N, M = map(int, input().split())
+#
+# cards = list(map(int, input().split()))
+#
+# max_sum = 0
+# find_closest_sum(cards, N, M, 0, 0, 0)
+#
+# print(max_sum)
 
-    while q:
-        y, x = q.popleft()
-        for dx, dy in [(0, 1), (1, 0), (-1, 0), (0, -1)]:
-            nx, ny = x + dx, y + dy
-            if 0 <= nx < row and 0 <= ny < col and not visited[ny][nx]:
-                if lst[ny][nx] == 1:
-                    melt_list.append((ny, nx))  # 외부 공기에 접촉한 치즈 저장
-                elif lst[ny][nx] == 0:
-                    q.append((ny, nx))
-                visited[ny][nx] = True
+T = int(input())
 
-    # 외부 공기에 접촉한 치즈 녹이기
-    for y, x in melt_list:
-        lst[y][x] = 0
-
-    return len(melt_list)  # 이번 단계에서 녹은 치즈의 수 반환
-
-col, row = map(int, input().split())
-lst = [list(map(int, input().split())) for _ in range(col)]
-time = 0
-last_melt = 0
-
-=======
-<<<<<<< HEAD
-def is_prime(num):
-    if num == 1:
-        return 0
-    elif num == 2 or num == 3:
-        return 1
-    else:
-        for i in range(2,num//2 + 1):
-            if num % i == 0:
-                return 0
-        else:
-            return 1
-
-N = int(input())
-cnt = 0
-arr = list(map(int, input().split()))
-for num in arr:
-    cnt += is_prime(num)
-print(cnt)
-=======
->>>>>>> 3cd294d36fe0f3e24ead3cc557f58dda18f273ce
-while True:
-    melted = melt_cheese()
-    if melted == 0:
-        break
-<<<<<<< HEAD
-    last_melt = melted
-    time += 1
-
-print(time)
-print(last_melt)
-
-=======
-    if A % B == 0:
-        ans = 'multiple'
-    elif B % A == 0:
-        ans = 'factor'
-    else:
-        ans = 'neither'
-    print(ans)
->>>>>>> 0fb25dd544851fd297f9a449c44cd10a18de493f
->>>>>>> 3cd294d36fe0f3e24ead3cc557f58dda18f273ce
+for _ in range(T):
+    s = input()
+    ST = []
+    for c in s:
+        if
