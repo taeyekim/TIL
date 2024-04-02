@@ -372,10 +372,3 @@ from collections import deque
 #
 # print(max_sum)
 
-T = int(input())
-
-for _ in range(T):
-    s = input()
-    ST = []
-    for c in s:
-        if
