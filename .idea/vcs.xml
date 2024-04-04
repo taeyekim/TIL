@@ -2,6 +2,19 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/1N_Relationship1-2024-04-03/db_hw_3_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/SQL1-2024-04-02/db_hw_1_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/SQL1-2024-04-02/db_hw_1_4" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/SQL1-2024-04-02/db_ws_1_1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/SQL1-2024-04-02/db_ws_1_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/SQL1-2024-04-02/db_ws_1_3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/SQL1-2024-04-02/db_ws_1_4" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/SQL1-2024-04-02/db_ws_1_5" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/SQL1-2024-04-02/db_ws_1_a" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/SQL1-2024-04-02/db_ws_1_b" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/SQL1-2024-04-02/db_ws_1_c" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/SQL2-2024-04-03/db_hw_2_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/SQL2-2024-04-03/db_hw_2_4" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Database/db_hw_1_2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Database/db_hw_1_4" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Database/db_ws_1_1" vcs="Git" />
@@ -24,6 +37,11 @@
     <mapping directory="$PROJECT_DIR$/Django/2024-03-12/django_ws_1_c" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Django/2024-03-13/django_hw_2_2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Django/2024-03-13/django_hw_2_4" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Django/2024-03-13/django_ws_2_1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Django/2024-03-13/django_ws_2_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Django/2024-03-13/django_ws_2_3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Django/2024-03-13/django_ws_2_4" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Django/2024-03-13/django_ws_2_5" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Django/2024-03-13/django_ws_2_a" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Django/2024-03-13/django_ws_2_b" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Django/2024-03-13/django_ws_2_c" vcs="Git" />
