@@ -84,37 +84,28 @@ from collections import deque
 
 from collections import deque
 
-dy = [0, 0, 1, -1]
-dx = [1, -1, 0, 0]
-
-
-def bfs(col, row):
-    cnt = 1
+def bfs(N, K):
     q = deque()
-    q.append((col,row))
-    painting[col][row] = 0
-
+    q.append((N, 0))
+    visited = [False] * 100001
+    visited[N] == True
     while q:
-        y, x = q.popleft()
-        for i in range(4):
-            ny = y + dy[i]
-            nx = x + dx[i]
-            if 0 <= nx <= m - 1 and 0 <= ny <= n-1 and painting[ny][nx] == 1:
-                painting[ny][nx] = 0
-                cnt += 1
-        return cnt
+        pos, time = q.popleft()
+        if pos == K:
+            return time
 
-n, m = map(int, input().split())
+        next_pos = pos * 2
+        if 0 <= next_pos <= 100000 and not visited[next_pos]:
+            q.append((next_pos, time + 1))
+            visited[next_pos] = True
 
-painting = [list(map(int, input().split())) for _ in range(n)]
+        for c in (pos-1, pos+1):
+            if 0 <= c <= 100000 and not visited[c]:
+                q.append((c, time + 1))
+                visited[c] = True
 
-painting_cnt = 0
-answer = 0
-for y in range(n):
-    for x in range(m):
-        if painting[y][x] == 1:
-            painting_cnt += 1
-            total = bfs(y, x)
-            answer = max(answer, total)
-print(painting_cnt)
+# 수빈 위치 N, 동생 위치 K
+N, K = map(int, input().split())
+cnt = 0
+answer = bfs(N, K)
 print(answer)
