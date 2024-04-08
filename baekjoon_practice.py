@@ -35,7 +35,7 @@
 # else:
 #     print(cnt)
 
-from collections import deque
+# from collections import deque
 
 
 # # 소수 판별 함수
@@ -83,29 +83,42 @@ from collections import deque
 # print(prime_sum_ways(N))
 
 from collections import deque
+import sys
 
-def bfs(N, K):
+def bfs(pos):
     q = deque()
-    q.append((N, 0))
-    visited = [False] * 100001
-    visited[N] == True
+    visited = [[[False] * M for _ in range(N)] for _ in range(H)]
+    for height, sero, garo in pos:
+        q.append((height, sero, garo, 0))
+        visited[height][sero][garo] = True
+
     while q:
-        pos, time = q.popleft()
-        if pos == K:
-            return time
+        h, y, x, cnt = q.popleft()
+        for dh, dy, dx in ((0, 1, 0), (0, 0, 1), (0, -1, 0), (0, 0, -1), (-1, 0, 0), (1, 0, 0)):
+            nh = h + dh
+            ny = y + dy
+            nx = x + dx
+            if 0 <= nh < H and 0 <= ny < N and 0 <= nx < M:
+                if not visited[nh][ny][nx] and tomato[nh][ny][nx] == 0:
+                    tomato[nh][ny][nx] = 1
+                    visited[nh][ny][nx] = True
+                    q.append((nh, ny, nx, cnt + 1))
+    else:
+        unripe_tomato_exists = any(tomato[h][n][m] == 0 for h in range(H) for n in range(N) for m in range(M))
+        if unripe_tomato_exists:
+            return -1
+        else:
+            return cnt
 
-        next_pos = pos * 2
-        if 0 <= next_pos <= 100000 and not visited[next_pos]:
-            q.append((next_pos, time + 1))
-            visited[next_pos] = True
 
-        for c in (pos-1, pos+1):
-            if 0 <= c <= 100000 and not visited[c]:
-                q.append((c, time + 1))
-                visited[c] = True
-
-# 수빈 위치 N, 동생 위치 K
-N, K = map(int, input().split())
+M, N, H = map(int, sys.stdin.readline().split()) # M 가로, N 세로, H 상자 수
+tomato = [[list(map(int, sys.stdin.readline().split())) for _ in range(N)] for _ in range(H)]
+position = []
 cnt = 0
-answer = bfs(N, K)
+for n in range(N):
+    for m in range(M):
+        for h in range(H):
+            if tomato[h][n][m] == 1:
+                position.append((h, n, m))
+answer = bfs(position)
 print(answer)
