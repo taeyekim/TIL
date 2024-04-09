@@ -82,43 +82,93 @@
 # N = int(input())
 # print(prime_sum_ways(N))
 
-from collections import deque
-import sys
+# from collections import deque
+# import sys
+#
+# def bfs(pos):
+#     q = deque()
+#     visited = [[[False] * M for _ in range(N)] for _ in range(H)]
+#     for height, sero, garo in pos:
+#         q.append((height, sero, garo, 0))
+#         visited[height][sero][garo] = True
+#
+#     while q:
+#         h, y, x, cnt = q.popleft()
+#         for dh, dy, dx in ((0, 1, 0), (0, 0, 1), (0, -1, 0), (0, 0, -1), (-1, 0, 0), (1, 0, 0)):
+#             nh = h + dh
+#             ny = y + dy
+#             nx = x + dx
+#             if 0 <= nh < H and 0 <= ny < N and 0 <= nx < M:
+#                 if not visited[nh][ny][nx] and tomato[nh][ny][nx] == 0:
+#                     tomato[nh][ny][nx] = 1
+#                     visited[nh][ny][nx] = True
+#                     q.append((nh, ny, nx, cnt + 1))
+#     else:
+#         unripe_tomato_exists = any(tomato[h][n][m] == 0 for h in range(H) for n in range(N) for m in range(M))
+#         if unripe_tomato_exists:
+#             return -1
+#         else:
+#             return cnt
+#
+#
+# M, N, H = map(int, sys.stdin.readline().split()) # M 가로, N 세로, H 상자 수
+# tomato = [[list(map(int, sys.stdin.readline().split())) for _ in range(N)] for _ in range(H)]
+# position = []
+# cnt = 0
+# for n in range(N):
+#     for m in range(M):
+#         for h in range(H):
+#             if tomato[h][n][m] == 1:
+#                 position.append((h, n, m))
+# answer = bfs(position)
+# print(answer)
 
-def bfs(pos):
-    q = deque()
-    visited = [[[False] * M for _ in range(N)] for _ in range(H)]
-    for height, sero, garo in pos:
-        q.append((height, sero, garo, 0))
-        visited[height][sero][garo] = True
+# N = int(input())
+# lst = [0] * 10001
+# for _ in range(N):
+#     num = int(input())
+#     lst[num] += 1
+# for i in range(len(lst)):
+#     if lst[i] >= 1:
+#         for j in range(lst[i]):
+#             print(i)
+#
+# from collections import deque
+#
+# def bfs(y1, x1, y2, x2):
+#     q = deque()
+#     q.append((y1, x1, 0))
+#     lst[y1][x1] += 1
+#     while q:
+#         y, x, cnt = q.popleft()
+#         if y == y2 and x == x2:
+#             return cnt
+#         for dy, dx in ((1, -2), (2, -1), (2, 1), (1, 2), (-1, 2), (-2, 1), (-1, -2), (-2, -1)):
+#             ny = y + dy
+#             nx = x + dx
+#             if 0 <= ny <= I-1 and 0 <= nx <= I-1 and lst[ny][nx] == 0:
+#                 q.append((ny, nx, cnt+1))
+#                 lst[ny][nx] = cnt
+#     else:
+#         return 0
+#
+# T = int(input()) # 테스트 케이스 개수
+#
+# for _ in range(T):
+#     I = int(input()) # 한 변의 길이
+#     lst = [[0] * I for _ in range(I)]
+#     x1, y1 = map(int, input().split())
+#     x2, y2 = map(int, input().split())
+#     answer = bfs(y1, x1, y2, x2)
+#     print(answer)
 
-    while q:
-        h, y, x, cnt = q.popleft()
-        for dh, dy, dx in ((0, 1, 0), (0, 0, 1), (0, -1, 0), (0, 0, -1), (-1, 0, 0), (1, 0, 0)):
-            nh = h + dh
-            ny = y + dy
-            nx = x + dx
-            if 0 <= nh < H and 0 <= ny < N and 0 <= nx < M:
-                if not visited[nh][ny][nx] and tomato[nh][ny][nx] == 0:
-                    tomato[nh][ny][nx] = 1
-                    visited[nh][ny][nx] = True
-                    q.append((nh, ny, nx, cnt + 1))
-    else:
-        unripe_tomato_exists = any(tomato[h][n][m] == 0 for h in range(H) for n in range(N) for m in range(M))
-        if unripe_tomato_exists:
-            return -1
-        else:
-            return cnt
-
-
-M, N, H = map(int, sys.stdin.readline().split()) # M 가로, N 세로, H 상자 수
-tomato = [[list(map(int, sys.stdin.readline().split())) for _ in range(N)] for _ in range(H)]
-position = []
-cnt = 0
-for n in range(N):
-    for m in range(M):
-        for h in range(H):
-            if tomato[h][n][m] == 1:
-                position.append((h, n, m))
-answer = bfs(position)
-print(answer)
+A, B, V = map(int, input().split()) # 낮 A 미터, 밤 B미터, V미터 도달
+meter = 0
+day = 1
+while True:
+    meter += A
+    if meter >= V:
+        break
+    meter -= B
+    day += 1
+print(day)
