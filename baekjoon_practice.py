@@ -82,30 +82,103 @@ from collections import deque
 # N = int(input())
 # print(prime_sum_ways(N))
 
+# from collections import deque
+#
+# def bfs(N, K):
+#     q = deque()
+#     q.append((N, 0))
+#     visited = [False] * 100001
+#     visited[N] == True
+#     while q:
+#         pos, time = q.popleft()
+#         if pos == K:
+#             return time
+#
+#         next_pos = pos * 2
+#         if 0 <= next_pos <= 100000 and not visited[next_pos]:
+#             q.append((next_pos, time + 1))
+#             visited[next_pos] = True
+#
+#         for c in (pos-1, pos+1):
+#             if 0 <= c <= 100000 and not visited[c]:
+#                 q.append((c, time + 1))
+#                 visited[c] = True
+#
+# # 수빈 위치 N, 동생 위치 K
+# N, K = map(int, input().split())
+# cnt = 0
+# answer = bfs(N, K)
+# print(answer)
+
 from collections import deque
 
-def bfs(N, K):
+dy = [-1, 0, 0, 1]
+dx = [0, -1, 1, 0]
+
+def bfs(col, row):
     q = deque()
-    q.append((N, 0))
-    visited = [False] * 100001
-    visited[N] == True
+    q.append((col, row, 0))
+    size = 2
+    fish_cnt = 0
+    visited = [[False] * N for _ in range(N)]
+    visited[col][row] = True
+    check = 0
     while q:
-        pos, time = q.popleft()
-        if pos == K:
-            return time
+        y, x, move = q.popleft()
 
-        next_pos = pos * 2
-        if 0 <= next_pos <= 100000 and not visited[next_pos]:
-            q.append((next_pos, time + 1))
-            visited[next_pos] = True
+        for i in range(4):
+            ny = y + dy[i]
+            nx = x + dx[i]
+            if 0 <= ny <= N - 1 and 0 <= nx <= N - 1:
+                if lst[ny][nx] <= size and not visited[ny][nx]:
+                    q.append((ny, nx, move + 1))
+                    visited[ny][nx] = True
 
-        for c in (pos-1, pos+1):
-            if 0 <= c <= 100000 and not visited[c]:
-                q.append((c, time + 1))
-                visited[c] = True
+                    if lst[ny][nx] != 0 and lst[ny][nx] <= size - 1:
+                        fish_cnt += 1
+                        lst[ny][nx] = 0
+                        visited = [[False] * N for _ in range(N)]
+                        visited[ny][nx] = True
+                        while q:
+                            q.popleft()
+                        q.append((ny, nx, move + 1))
+                        check = move + 1
 
-# 수빈 위치 N, 동생 위치 K
-N, K = map(int, input().split())
-cnt = 0
-answer = bfs(N, K)
+                        if fish_cnt == size:
+                            if size != 7:
+                                fish_cnt = 0
+                                size += 1
+                        print(
+                            f"check : {check}, ny : {ny}, nx : {nx}, move : {move + 1}, fish_cnt : {fish_cnt}, size = {size}, visited[{ny}][{nx}] : {visited[ny][nx]}")
+                        for j in range(N):
+                            print(lst[j], visited[j])
+                        print()
+                        break
+    else:
+        return 0 if check == 0 else check
+
+N = int(input())
+lst = [list(map(int, input().split())) for _ in range(N)]
+fish_pos = [[] for _ in range(7)]
+print(fish_pos)
+for i in range(N):
+    for j in range(N):
+        if lst[i][j] == 9:
+            lst[i][j] = 0
+            col, row = i, j
+        # if lst[i][j] == 1:
+        #     fish_pos[1].append([i, j])
+        # elif lst[i][j] == 2:
+        #     fish_pos[2].append([i, j])
+        # elif lst[i][j] == 3:
+        #     fish_pos[3].append([i, j])
+        # elif lst[i][j] == 4:
+        #     fish_pos[4].append([i, j])
+        # elif lst[i][j] == 5:
+        #     fish_pos[5].append([i, j])
+        # elif lst[i][j] == 6:
+        #     fish_pos[6].append([i, j])
+
+answer = bfs(col, row)
 print(answer)
+
