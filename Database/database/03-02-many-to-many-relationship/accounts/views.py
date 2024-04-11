@@ -4,6 +4,7 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib.auth import get_user_model
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 
 
@@ -83,3 +84,29 @@ def change_password(request, user_pk):
         'form': form,
     }
     return render(request, 'accounts/change_password.html', context)
+
+
+def profile(request, username):
+    User = get_user_model()
+    person = User.objects.get(username=username)
+    context = {
+        'person': person,
+    }
+    return render(request, 'accounts/profile.html', context)
+
+
+@login_required
+def follow(request, user_pk):
+    me = request.user
+    you = get_user_model().objects.get(pk=user_pk)
+
+    # 자기 자신을 팔로우 할 수 없음
+    if me != you:
+        # 요청하는 사람이 상대방의 팔로워 목록에 있는지 없는지
+        if me in you.followers.all():
+            you.followers.remove(me)
+            # me.followings.remove(you)
+        else:
+            you.followers.add(me)
+            # me.followings.add(you)
+    return redirect('accounts:profile', you.username)

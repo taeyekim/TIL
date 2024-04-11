@@ -15,7 +15,7 @@ def index(request):
 
 def detail(request, pk):
     article = Article.objects.get(pk=pk)
-    # 특정 게시글에 작성된 모든 댓글 조회(Article -> Comment, 역참조)
+    # 특정 게시글에 작성된 모든 댓글 조회 (Article -> Comment, 역참조)
     comments = article.comment_set.all()
     # DB의 모든 댓글을 조회(특정 게시글에 작성된 모든 댓글 조회가 아님)
     # Comment.objects.all()
@@ -67,3 +67,32 @@ def update(request, pk):
         'article': article,
     }
     return render(request, 'articles/update.html', context)
+
+
+def comments_create(request, pk):
+    # 게시글 조회 (어떤 게시글에 작성되어야하는지 알아야하기 때문)
+    article = Article.objects.get(pk=pk)
+    comments = article.comment_set.all()
+    # 사용자 입력 데이터를 받아서 Comment 저장 (+유효성 검사)
+    comment_form = CommentForm(request.POST)
+    if comment_form.is_valid():
+        comment = comment_form.save(commit=False)
+        comment.article = article
+        comment.save()
+        return redirect('articles:detail', article.pk)
+    context = {
+        'comment_form': comment_form,
+        'article': article,
+        'comments': comments,
+    }
+    return render(request, 'articles/detail.html', context)
+    
+def comments_delete(request, article_pk, comment_pk):
+    # 어떤 댓글을 삭제하는지 조회
+    comment = Comment.objects.get(pk=comment_pk)
+    # 아래 코드처럼 작성가능
+    # 단, 이렇게 작성할경우 url에서 article_pk가 제거되고 url 구성을 변경해야 함
+    # 지금까지의 url 전체 구성 및 통일성을 유지하기 위해 아래코드 방식을 선택하지 않음
+    # article_pk = comment.article.pk
+    comment.delete()
+    return redirect('articles:detail', article_pk)

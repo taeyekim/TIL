@@ -3,6 +3,9 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Database/1N_Relationship1-2024-04-03/db_hw_3_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/1N_Relationship1-2024-04-03/db_hw_3_4" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/1N_Relationship2-2024-04-04/db_hw_4_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Database/1N_Relationship2-2024-04-04/db_hw_4_4" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Database/MNrelationship1-2024-04-08/db_hw_5_2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Database/MNrelationship1-2024-04-08/db_hw_5_4" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Database/MNrelationsship2-2024-04-09/db_hw_6_2" vcs="Git" />
@@ -52,6 +55,8 @@
     <mapping directory="$PROJECT_DIR$/Django/2024-03-29/django_hw_8_2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Django/2024-03-29/django_hw_8_4" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Django/2024-04-01/django_hw_9_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Django/2024-04-11/django_hw_10_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Django/2024-04-11/django_hw_10_4" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Django/django" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/HTML_CSS/2024-03-07/web_hw_2_2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/HTML_CSS/2024-03-07/web_ws_2_1" vcs="Git" />
