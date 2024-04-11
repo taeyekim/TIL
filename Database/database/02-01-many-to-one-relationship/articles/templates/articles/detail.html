@@ -21,16 +21,22 @@
   </form>
   <hr>
   <h3>댓글 작성</h3>
-  <form action="#" method="POST">
+  <form action="{% url "articles:comments_create" article.pk %}" method="POST">
     {% csrf_token %}
-    {{ comment_form.as_p }}
+    {{ comment_form }}
     <input type="submit" value="댓글 작성">
-  </horm>
+  </form>
   <hr>
   <h3>댓글 목록</h3>
   <ul>
     {% for comment in comments %}
-    <li>{{ comment.content }}</li>
+      <li>
+        {{ comment.content }}
+        <form action="{% url "articles:comments_delete" article.pk comment.pk %}" method="POST" style="display: inline;">
+          {% csrf_token %}
+          <input type="submit" value="삭제">
+        </form>
+      </li>
     {% endfor %}
   </ul>
   <hr>
