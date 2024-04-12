@@ -83,7 +83,6 @@
 # print(prime_sum_ways(N))
 
 # from collections import deque
-<<<<<<< HEAD
 #
 # def bfs(N, K):
 #     q = deque()
@@ -111,79 +110,78 @@
 # answer = bfs(N, K)
 # print(answer)
 
-from collections import deque
+# from collections import deque
+#
+# dy = [-1, 0, 0, 1]
+# dx = [0, -1, 1, 0]
+#
+# def bfs(col, row):
+#     q = deque()
+#     q.append((col, row, 0))
+#     size = 2
+#     fish_cnt = 0
+#     visited = [[False] * N for _ in range(N)]
+#     visited[col][row] = True
+#     check = 0
+#     while q:
+#         y, x, move = q.popleft()
+#
+#         for i in range(4):
+#             ny = y + dy[i]
+#             nx = x + dx[i]
+#             if 0 <= ny <= N - 1 and 0 <= nx <= N - 1:
+#                 if lst[ny][nx] <= size and not visited[ny][nx]:
+#                     q.append((ny, nx, move + 1))
+#                     visited[ny][nx] = True
+#
+#                     if lst[ny][nx] != 0 and lst[ny][nx] <= size - 1:
+#                         fish_cnt += 1
+#                         lst[ny][nx] = 0
+#                         visited = [[False] * N for _ in range(N)]
+#                         visited[ny][nx] = True
+#                         while q:
+#                             q.popleft()
+#                         q.append((ny, nx, move + 1))
+#                         check = move + 1
+#
+#                         if fish_cnt == size:
+#                             if size != 7:
+#                                 fish_cnt = 0
+#                                 size += 1
+#                         print(
+#                             f"check : {check}, ny : {ny}, nx : {nx}, move : {move + 1}, fish_cnt : {fish_cnt}, size = {size}, visited[{ny}][{nx}] : {visited[ny][nx]}")
+#                         for j in range(N):
+#                             print(lst[j], visited[j])
+#                         print()
+#                         break
+#     else:
+#         return 0 if check == 0 else check
+#
+# N = int(input())
+# lst = [list(map(int, input().split())) for _ in range(N)]
+# fish_pos = [[] for _ in range(7)]
+# print(fish_pos)
+# for i in range(N):
+#     for j in range(N):
+#         if lst[i][j] == 9:
+#             lst[i][j] = 0
+#             col, row = i, j
+#         # if lst[i][j] == 1:
+#         #     fish_pos[1].append([i, j])
+#         # elif lst[i][j] == 2:
+#         #     fish_pos[2].append([i, j])
+#         # elif lst[i][j] == 3:
+#         #     fish_pos[3].append([i, j])
+#         # elif lst[i][j] == 4:
+#         #     fish_pos[4].append([i, j])
+#         # elif lst[i][j] == 5:
+#         #     fish_pos[5].append([i, j])
+#         # elif lst[i][j] == 6:
+#         #     fish_pos[6].append([i, j])
+#
+# answer = bfs(col, row)
+# print(answer)
 
-dy = [-1, 0, 0, 1]
-dx = [0, -1, 1, 0]
-
-def bfs(col, row):
-    q = deque()
-    q.append((col, row, 0))
-    size = 2
-    fish_cnt = 0
-    visited = [[False] * N for _ in range(N)]
-    visited[col][row] = True
-    check = 0
-    while q:
-        y, x, move = q.popleft()
-
-        for i in range(4):
-            ny = y + dy[i]
-            nx = x + dx[i]
-            if 0 <= ny <= N - 1 and 0 <= nx <= N - 1:
-                if lst[ny][nx] <= size and not visited[ny][nx]:
-                    q.append((ny, nx, move + 1))
-                    visited[ny][nx] = True
-
-                    if lst[ny][nx] != 0 and lst[ny][nx] <= size - 1:
-                        fish_cnt += 1
-                        lst[ny][nx] = 0
-                        visited = [[False] * N for _ in range(N)]
-                        visited[ny][nx] = True
-                        while q:
-                            q.popleft()
-                        q.append((ny, nx, move + 1))
-                        check = move + 1
-
-                        if fish_cnt == size:
-                            if size != 7:
-                                fish_cnt = 0
-                                size += 1
-                        print(
-                            f"check : {check}, ny : {ny}, nx : {nx}, move : {move + 1}, fish_cnt : {fish_cnt}, size = {size}, visited[{ny}][{nx}] : {visited[ny][nx]}")
-                        for j in range(N):
-                            print(lst[j], visited[j])
-                        print()
-                        break
-    else:
-        return 0 if check == 0 else check
-
-N = int(input())
-lst = [list(map(int, input().split())) for _ in range(N)]
-fish_pos = [[] for _ in range(7)]
-print(fish_pos)
-for i in range(N):
-    for j in range(N):
-        if lst[i][j] == 9:
-            lst[i][j] = 0
-            col, row = i, j
-        # if lst[i][j] == 1:
-        #     fish_pos[1].append([i, j])
-        # elif lst[i][j] == 2:
-        #     fish_pos[2].append([i, j])
-        # elif lst[i][j] == 3:
-        #     fish_pos[3].append([i, j])
-        # elif lst[i][j] == 4:
-        #     fish_pos[4].append([i, j])
-        # elif lst[i][j] == 5:
-        #     fish_pos[5].append([i, j])
-        # elif lst[i][j] == 6:
-        #     fish_pos[6].append([i, j])
-
-answer = bfs(col, row)
-print(answer)
-
-=======
 # import sys
 #
 # def bfs(pos):
@@ -400,37 +398,43 @@ print(answer)
 #         ate_fishes = 0
 #
 # print(time)
+#
 s = 'abc'
-while s:
-    s = input()
-    if s == '.':
-        break
-    st = []
-    answer = 'yes'
-    for c in s:
-        # print(c, st)
-        if c == '[':
-            st.append('[')
-        elif c == '(':
-            st.append('(')
+# while s:
+#     s = input()
+#     if s == '.':
+#         break
+#     st = []
+#     answer = 'yes'
+#     for c in s:
+#         # print(c, st)
+#         if c == '[':
+#             st.append('[')
+#         elif c == '(':
+#             st.append('(')
+#
+#         if st:
+#             if c == ']':
+#                 if c == st[-1]:
+#                     st.pop()
+#                 else:
+#                     answer = 'no'
+#                     break
+#             elif c == ')':
+#                 if c == st[-1]:
+#                     st.pop()
+#                 else:
+#                     answer = 'no'
+#                     break
+#         else:
+#             if c == ']' or c == ')':
+#                 answer = 'no'
+#                 break
+#
+#     print(answer)
 
-        if st:
-            if c == ']':
-                if c == st[-1]:
-                    st.pop()
-                else:
-                    answer = 'no'
-                    break
-            elif c == ')':
-                if c == st[-1]:
-                    st.pop()
-                else:
-                    answer = 'no'
-                    break
-        else:
-            if c == ']' or c == ')':
-                answer = 'no'
-                break
-
-    print(answer)
->>>>>>> feeb5e324546cb7372952dd8824ae00d459f1935
+A, B = map(int, input().split())
+ans = 0
+for num in range(A+1, B):
+    ans += num
+print(ans)
