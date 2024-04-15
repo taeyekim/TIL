@@ -57,6 +57,8 @@
     <mapping directory="$PROJECT_DIR$/Django/2024-04-01/django_hw_9_2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Django/2024-04-11/django_hw_10_2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Django/2024-04-11/django_hw_10_4" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Django/2024-04-15/django_hw_11_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Django/2024-04-15/django_hw_11_4" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Django/django" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/HTML_CSS/2024-03-07/web_hw_2_2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/HTML_CSS/2024-03-07/web_ws_2_1" vcs="Git" />
@@ -67,6 +69,7 @@
     <mapping directory="$PROJECT_DIR$/HTML_CSS/2024-03-11/web_ws_4_4" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/HTML_CSS/2024-03-11/web_ws_4_5" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/PJT/04pjt" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/PJT/PJT05/05pjt" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/PJT/pjt" vcs="Git" />
   </component>
 </project>
