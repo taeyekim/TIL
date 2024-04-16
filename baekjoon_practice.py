@@ -399,7 +399,7 @@
 #
 # print(time)
 #
-s = 'abc'
+# s = 'abc'
 # while s:
 #     s = input()
 #     if s == '.':
@@ -433,8 +433,7 @@ s = 'abc'
 #
 #     print(answer)
 
-A, B = map(int, input().split())
-ans = 0
-for num in range(A+1, B):
-    ans += num
-print(ans)
+N, M, B = map(int, input().split()) # N 개의 줄, M개의 가로, B개의 블록 보유
+
+arr = [list(map(int, input().split())) for _ in range(N)]
+
