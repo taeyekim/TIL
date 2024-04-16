@@ -433,7 +433,64 @@
 #
 #     print(answer)
 
+<<<<<<< HEAD
 N, M, B = map(int, input().split()) # N 개의 줄, M개의 가로, B개의 블록 보유
 
 arr = [list(map(int, input().split())) for _ in range(N)]
 
+=======
+def solve(s_lev, e_lev, lst):
+    # 변수 초기화
+    blocks_needed = 0
+    blocks_removed = 0
+    add_time = 0
+    remove_time = 0
+
+    # 초기 높이 설정 계산
+    for c in range(N):
+        for r in range(M):
+            diff = s_lev - lst[c][r]
+            if diff > 0:
+                blocks_needed += diff
+                add_time += diff
+            else:
+                blocks_removed += -diff
+                remove_time += -diff * 2
+
+    ans_level = s_lev
+    ans_time = add_time + remove_time
+
+    # 각 높이별 시간과 블록 수 조정
+    for level in range(s_lev + 1, e_lev + 1):
+        have_blocks = B
+        t = 0
+        for c in range(N):
+            for r in range(M):
+                diff_d = level - lst[c][r]
+                if diff_d > 0:
+                    t += diff_d
+                    have_blocks -= diff_d
+                elif diff_d < 0:
+                    diff_d = -diff_d
+                    t += diff_d * 2
+                    have_blocks += diff_d
+
+        if have_blocks < 0:
+            continue
+        ans_time = min(t, ans_time)
+        if ans_time == t:
+            ans_level = level
+    return ans_time, ans_level
+
+N, M, B = map(int, input().split()) # 세로 N, 가로 M, 인벤토리 블록 수
+
+arr = [list(map(int, input().split())) for _ in range(N)]
+start_num = 256
+end_num = 0
+for i in range(N):
+    for j in range(M):
+        start_num = min(arr[i][j], start_num)
+        end_num = max(arr[i][j], end_num)
+time, lev = solve(start_num, end_num, arr)
+print(time, lev)
+>>>>>>> 7e7aa09c649293d00efdc202c039f72c84b41ee3
