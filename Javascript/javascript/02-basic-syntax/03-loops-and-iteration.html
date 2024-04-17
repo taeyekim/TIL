@@ -17,12 +17,18 @@
 
 
     // for...in
-    const object = {
+    const objects = {
       a: 'apple',
       b: 'banana'
     }
 
+    for (a in objects) {
+      console.log(a)
+    }
 
+    for (a of objects) {
+      console.log(a)
+    }
 
 
     // for...of
