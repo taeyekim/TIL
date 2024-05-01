@@ -434,6 +434,7 @@
 #     print(answer)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 N, M, B = map(int, input().split()) # N 개의 줄, M개의 가로, B개의 블록 보유
 
 arr = [list(map(int, input().split())) for _ in range(N)]
@@ -445,45 +446,87 @@ def solve(s_lev, e_lev, lst):
     blocks_removed = 0
     add_time = 0
     remove_time = 0
+=======
+# def solve(s_lev, e_lev, lst):
+#     # 변수 초기화
+#     blocks_needed = 0
+#     blocks_removed = 0
+#     add_time = 0
+#     remove_time = 0
+#
+#     # 초기 높이 설정 계산
+#     for c in range(N):
+#         for r in range(M):
+#             diff = s_lev - lst[c][r]
+#             if diff > 0:
+#                 blocks_needed += diff
+#                 add_time += diff
+#             else:
+#                 blocks_removed += -diff
+#                 remove_time += -diff * 2
+#
+#     ans_level = s_lev
+#     ans_time = add_time + remove_time
+#
+#     # 각 높이별 시간과 블록 수 조정
+#     for level in range(s_lev + 1, e_lev + 1):
+#         have_blocks = B
+#         t = 0
+#         for c in range(N):
+#             for r in range(M):
+#                 diff_d = level - lst[c][r]
+#                 if diff_d > 0:
+#                     t += diff_d
+#                     have_blocks -= diff_d
+#                 elif diff_d < 0:
+#                     diff_d = -diff_d
+#                     t += diff_d * 2
+#                     have_blocks += diff_d
+#
+#         if have_blocks < 0:
+#             continue
+#         ans_time = min(t, ans_time)
+#         if ans_time == t:
+#             ans_level = level
+#     return ans_time, ans_level
+#
+# N, M, B = map(int, input().split()) # 세로 N, 가로 M, 인벤토리 블록 수
+#
+# arr = [list(map(int, input().split())) for _ in range(N)]
+# start_num = 256
+# end_num = 0
+# for i in range(N):
+#     for j in range(M):
+#         start_num = min(arr[i][j], start_num)
+#         end_num = max(arr[i][j], end_num)
+# time, lev = solve(start_num, end_num, arr)
+# print(time, lev)
+>>>>>>> 1b4ce4fb763ece900b6d2c33e0531fb1be23e8d0
 
-    # 초기 높이 설정 계산
-    for c in range(N):
-        for r in range(M):
-            diff = s_lev - lst[c][r]
-            if diff > 0:
-                blocks_needed += diff
-                add_time += diff
-            else:
-                blocks_removed += -diff
-                remove_time += -diff * 2
+import turtle
+import random
 
-    ans_level = s_lev
-    ans_time = add_time + remove_time
+# 가정: 학생들의 이름이 주어졌다고 가정
+students = ['구혜인', '김여준', '김태연', '박민철', '유지연', '최민규',
+            '최은경', '한세훈', '강두홍', '김민영', '박지응', '서규범',
+            '윤성준', '이예지', '전가현', '정금열', '정남용', '김성은',
+            '서민수', '이정준', '최승필', '이주호', 'NULL', 'NULL']
 
-    # 각 높이별 시간과 블록 수 조정
-    for level in range(s_lev + 1, e_lev + 1):
-        have_blocks = B
-        t = 0
-        for c in range(N):
-            for r in range(M):
-                diff_d = level - lst[c][r]
-                if diff_d > 0:
-                    t += diff_d
-                    have_blocks -= diff_d
-                elif diff_d < 0:
-                    diff_d = -diff_d
-                    t += diff_d * 2
-                    have_blocks += diff_d
+# 학생 이름을 랜덤하게 배치
+random_students = random.sample(students, len(students))
 
-        if have_blocks < 0:
-            continue
-        ans_time = min(t, ans_time)
-        if ans_time == t:
-            ans_level = level
-    return ans_time, ans_level
+# 6x4 배열 생성
+numbers = [['' for _ in range(7)] for _ in range(4)]
 
-N, M, B = map(int, input().split()) # 세로 N, 가로 M, 인벤토리 블록 수
+# 배치된 학생 이름을 numbers 배열에 할당
+student_index = 0
+for row in range(4):
+    for col in range(7):
+        if col != 3:  # 네 번째 열은 복도
+            numbers[row][col] = random_students[student_index]
+            student_index += 1
 
+<<<<<<< HEAD
 arr = [list(map(int, input().split())) for _ in range(N)]
 start_num = 256
 end_num = 0
@@ -494,3 +537,43 @@ for i in range(N):
 time, lev = solve(start_num, end_num, arr)
 print(time, lev)
 >>>>>>> 7e7aa09c649293d00efdc202c039f72c84b41ee3
+=======
+# Turtle 그래픽을 사용하여 자리 배치도를 그리는 함수
+def draw_seating_chart_corrected():
+    # Turtle 환경 설정
+    screen = turtle.Screen()
+    screen.setup(width=1000, height=650)  # 창의 크기를 더 크게 조정
+    t = turtle.Turtle()
+    t.speed(0)
+
+    # 사각형 그리기 함수
+    def draw_square(x, y, name):
+        t.penup()
+        t.goto(x, y)
+        t.pendown()
+        for _ in range(4):
+            t.forward(70)  # 사각형 크기 증가
+            t.right(90)
+        t.penup()
+        t.goto(x + 35, y - 45)  # 글자 위치 조정
+        if name == 'NULL':  # NULL 값일 경우 빨간색으로 설정
+            t.pencolor("red")
+        else:
+            t.pencolor("black")
+        t.write(name, align="center", font=("Arial", 10, "normal"))  # 글자 크기 조정
+        t.pencolor("black")
+
+    start_x, start_y = -300, 200  # 시작 위치 조정
+    # 자리 그리기
+    for i, row in enumerate(numbers):
+        for j, name in enumerate(row):
+            if name:  # 빈 칸이 아니면 그린다.
+                x = start_x + j * 80  # 각 칸 사이 간격 증가
+                y = start_y - i * 80  # 각 칸 사이 간격 증가
+                draw_square(x, y, name)
+
+    t.hideturtle()
+    screen.mainloop()
+
+draw_seating_chart_corrected()
+>>>>>>> 1b4ce4fb763ece900b6d2c33e0531fb1be23e8d0
